@@ -2,6 +2,7 @@ package  com.cabbagedevelopment.condor2helper
 
 import javafx.scene.Parent
 import tornadofx.*
+import java.io.File
 
 class MainApplication : App(MainView::class) {
 
@@ -18,7 +19,7 @@ class MainView : View() {
  */
 fun main(args: Array<String>) {
     if (args.isNotEmpty()) {
-        CondorLauncher(args[0]).launch()
+        CondorLauncher(args.first()).launch()
     } else {
         launch<MainApplication>(args)
     }
