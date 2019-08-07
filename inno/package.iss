@@ -42,3 +42,11 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
+[Registry]
+Root: HKCR; Subkey: "c2-revive"; Flags: uninsdeletekey
+Root: HKCR; Subkey: "c2-revive"; ValueType: string; ValueName: ""; ValueData: "URL:Condor2Helper custom protocol handler"; Flags: uninsdeletekey
+Root: HKCR; Subkey: "c2-revive"; ValueType: string; ValueName: "URL Protocol"; ValueData: ""; Flags: uninsdeletekey
+Root: HKCR; Subkey: "c2-revive\DefaultIcon"; Flags: uninsdeletekey
+Root: HKCR; Subkey: "c2-revive\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{#MyAppExeName},1"; Flags: uninsdeletekey
+Root: HKCR; Subkey: "c2-revive\Shell\open\command"; Flags: uninsdeletekey
+Root: HKCR; Subkey: "c2-revive\Shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""; Flags: uninsdeletekey
