@@ -1,3 +1,21 @@
+/*
+ * Condor2 Revive Helper, a program which allows Condor2 to be launched more easily via Revive.
+ * Copyright (C) 2019 Sam McCormack
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 buildscript {
     dependencies {
         classpath group: 'org.mini2Dx', name: 'parcl', version: '1.6.1'
@@ -26,9 +44,10 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     compile "no.tornado:tornadofx:1.7.17"
 
+    implementation 'com.github.vatbub:mslinks:1.0.5'
+
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-apply plugin: "org.mini2Dx.parcl"
 
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
@@ -37,10 +56,12 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
+apply plugin: "org.mini2Dx.parcl"
+
 parcl {
     exe {
         exeName = "Condor2Helper"
-        withJre("C:\\Program Files\\Java\\jdk1.8.0_181")
+        withJre("C:\\Program Files\\Java\\jdk1.8.0_211")
     }
     app {
         appName = "Condor2 Revive Helper"

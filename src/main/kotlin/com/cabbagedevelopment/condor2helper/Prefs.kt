@@ -18,24 +18,32 @@
 
 package com.cabbagedevelopment.condor2helper
 
-import java.io.File
+import java.util.prefs.Preferences
+import kotlin.reflect.KProperty
 
 /**
- * A class which handles launching Condor2 via Revive.
+ * A preferences class to allow persistent storage of data.
  */
-class CondorLauncher(val prefs: Prefs, var argument: String) {
+class Prefs {
 
-    // If this is supplied as an argument, Condor2 will launch via Revive in single-player mode.
-    val launchOnly = "--launch"
+    private val prefs = Preferences.userRoot().node(javaClass.name)
 
-    fun launch() {
-        if (argument == launchOnly) {
-            argument = ""
+    var revivePath: String?  by StringProperty("revive_path")
+    var reviveInjectorPath: String?  by StringProperty("revive_injector_path")
+    var condorPath: String? by StringProperty("condor2_path")
+
+    /**
+     * A property delegate used to improve the syntax of saving and recalling values.
+     */
+    inner class StringProperty(private val key: String, private val default: String? = null) {
+
+        operator fun getValue(thisRef: Any?, property: KProperty<*>): String? {
+            return prefs.get(key, default)
         }
-        // Launch Condor2 via Revive with selected argument, setting Revive directory as working directory.
-        ProcessBuilder(prefs.reviveInjectorPath, "\"${prefs.condorPath}\\Condor.exe\" $argument").apply {
-            prefs.revivePath?.let { directory(File(it)) }
-            start()
+
+        operator fun setValue(thisRef: Any?, property: KProperty<*>, value: String?) {
+            prefs.put(key, value)
         }
     }
 }
+
