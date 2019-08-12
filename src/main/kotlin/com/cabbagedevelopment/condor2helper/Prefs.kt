@@ -45,5 +45,16 @@ class Prefs {
             prefs.put(key, value)
         }
     }
+
+    /**
+     * Used for testing purposes.
+     */
+    fun removeAll() {
+        prefs.apply {
+            remove("revive_injector_path")
+            remove("revive_path")
+            remove("condor2_path")
+        }
+    }
 }
 

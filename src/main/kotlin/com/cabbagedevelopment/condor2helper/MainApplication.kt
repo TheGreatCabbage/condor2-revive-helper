@@ -39,7 +39,7 @@ fun main(args: Array<String>) {
  */
 class MainApplication : App(MainView::class) {
 
-    val injector = "ReviveInjector_x64.exe"
+    val injectorName = "ReviveInjector_x64.exe"
     val prefs = Prefs()
     val view = find<MainView>()
 
@@ -72,9 +72,11 @@ class MainApplication : App(MainView::class) {
 
     private fun findRevive() {
         findWith(ReviveLocator()) { path ->
-            prefs.revivePath = "$path\\Revive"
-            prefs.reviveInjectorPath = "$path\\Revive\\$injector"
-            view.reviveText.text = path
+            // We need the path to the Revive folder inside the Revive installation directory.
+            val revivePath = "$path\\Revive"
+            prefs.revivePath = revivePath
+            prefs.reviveInjectorPath = "$revivePath\\$injectorName"
+            view.reviveText.text = revivePath
         }
     }
 
@@ -84,7 +86,7 @@ class MainApplication : App(MainView::class) {
     fun save() {
         prefs.condorPath = view.condorText.text
         prefs.revivePath = view.reviveText.text
-        prefs.reviveInjectorPath = "${prefs.revivePath}\\$injector"
+        prefs.reviveInjectorPath = "${prefs.revivePath}\\$injectorName"
     }
 }
 
