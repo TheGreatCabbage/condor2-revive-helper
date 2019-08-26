@@ -28,7 +28,7 @@ plugins {
 }
 
 group 'com.cabbagedevelopment.condor2helper'
-version '1.0'
+version '1.0.2'
 
 apply plugin: "application"
 mainClassName = "com.cabbagedevelopment.condor2helper.MainApplicationKt"
