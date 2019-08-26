@@ -65,7 +65,9 @@ class MainView : View() {
                     browseTo("https://addons.mozilla.org/en-GB/firefox/addon/condor2extension/")
                 }
             }
-            button("Chrome") { isDisable = true }
+            button("Chrome") {
+                action { browseTo("https://github.com/TheGreatCabbage/condor2-extension/releases") }
+            }
         }
         row {
             label("Create desktop shortcut to launch Condor in single-player mode via Revive:")
