@@ -60,13 +60,13 @@ class MainView : View() {
         }
         row {
             label("Install browser extension:")
-            button("Firefox (recommended)") {
+            button("Firefox") {
                 action {
                     browseTo("https://addons.mozilla.org/en-GB/firefox/addon/condor2extension/")
                 }
             }
             button("Chrome") {
-                action { browseTo("https://github.com/TheGreatCabbage/condor2-extension/releases") }
+                action { browseTo("https://chrome.google.com/webstore/detail/condor2-extension/joipnfhikghfdcpkngglhkjbjhkjnlhb") }
             }
         }
         row {
