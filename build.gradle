@@ -28,7 +28,7 @@ plugins {
 }
 
 group 'com.cabbagedevelopment.condor2helper'
-version '1.0.2'
+version '1.0.3'
 
 apply plugin: "application"
 mainClassName = "com.cabbagedevelopment.condor2helper.MainApplicationKt"
@@ -61,7 +61,7 @@ apply plugin: "org.mini2Dx.parcl"
 parcl {
     exe {
         exeName = "Condor2Helper"
-        withJre("C:\\Program Files\\Java\\jdk1.8.0_211")
+        withJre("C:\\Program Files\\Java\\jdk1.8.0_221")
     }
     app {
         appName = "Condor2 Revive Helper"
