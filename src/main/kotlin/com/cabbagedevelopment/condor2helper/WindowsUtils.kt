@@ -22,6 +22,7 @@ import mslinks.ShellLink
 import java.awt.Desktop
 import java.io.File
 import java.net.URI
+import javax.swing.filechooser.FileSystemView
 
 /**
  * Opens the default web browser with a given URL.
@@ -39,7 +40,7 @@ fun browseTo(url: String) {
 fun createDesktopShortcut(prefs: Prefs, onSuccess: () -> Unit) {
     val targetDir = File(".").absolutePath
     val iconPath = "${prefs.condorPath}\\Condor.exe"
-    val desktop = "C:\\Users\\${System.getProperty("user.name")}\\Desktop"
+    val desktop = getDesktopPath()
     val shortcutName = "Condor 2 VR.lnk"
 
     val target = "$targetDir\\Condor2Helper.exe"
@@ -53,4 +54,11 @@ fun createDesktopShortcut(prefs: Prefs, onSuccess: () -> Unit) {
     File(desktop).listFiles()
         ?.firstOrNull { it.name == shortcutName }
         ?.let { onSuccess() }
+}
+
+/**
+ * Returns the path to the Desktop folder.
+ */
+fun getDesktopPath(): String {
+    return FileSystemView.getFileSystemView().homeDirectory.path
 }
