@@ -39,7 +39,7 @@ fun main(args: Array<String>) {
  */
 class MainApplication : App(MainView::class) {
 
-    val injectorName = "ReviveInjector_x64.exe"
+    val injectorName = "ReviveInjector.exe"
     val prefs = Prefs()
     val view = find<MainView>()
 
@@ -86,7 +86,6 @@ class MainApplication : App(MainView::class) {
     fun save() {
         prefs.condorPath = view.condorText.text
         prefs.revivePath = view.reviveText.text
-        prefs.reviveInjectorPath = "${prefs.revivePath}\\$injectorName"
+        prefs.reviveInjectorPath = "${prefs.revivePath}\\x64\\$injectorName"
     }
 }
-
